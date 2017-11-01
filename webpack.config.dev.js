@@ -8,9 +8,12 @@ const ROOT_PATH = path.join(__dirname);
 
 
 module.exports = {
-
+    devtool: "source-map",
     entry: {
-        index: ['./src/js/index.js']
+        index: [
+            './src/js/index.js',
+            'webpack-dev-server/client?http://localhost:8080'
+        ]
     },
     output: {
         filename: '[name].[hash].js',
@@ -21,9 +24,9 @@ module.exports = {
         rules: [{
             test: /\.(js|jsx)$/,
             exclude: path.resolve(__dirname, 'node_modules'),
-            use: [
-                { loader: 'babel-loader' }
-            ]
+            use: [{
+                loader: 'babel-loader'
+            }]
         }]
     },
     resolve: {
@@ -64,5 +67,12 @@ module.exports = {
             hash: true,
             chunks: ['index']
         })
-    ]
+    ],
+    devServer: {
+        contentBase: path.join(__dirname, 'build'),
+        port: 8988,
+        stats: {
+            colors: true
+        }
+    }
 };

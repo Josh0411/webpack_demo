@@ -10,6 +10,9 @@
 // var findIndex = require('lodash/sortBy');
 
 import _ from 'lodash';
+import React from 'react';
+import dom from 'react-dom';
+import Demo from '../smartComponent/Demo.jsx';
 
 /*var users = [
   { 'user': 'barney',  'active': false },
@@ -32,6 +35,12 @@ var users = [
 var result = _.sortBy(users, function(o) { return o.age; });
 
 console.log(result);
+
+dom.render(<Demo title="this is the name list:"/>,document.getElementById('container'));
+
+
+
+
 
 
 
